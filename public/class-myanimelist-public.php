@@ -49,7 +49,7 @@ class myanimelist_Public {
 	 */
 	public function __construct( $myanimelist, $version ) {
 
-		$this->myanimelist = $myanimelist;
+		$this->plugin_name = $myanimelist;
 		$this->version = $version;
 
 	}
@@ -73,7 +73,7 @@ class myanimelist_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->myanimelist, plugin_dir_url( __FILE__ ) . 'css/myanimelist-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/myanimelist-public.css', array(), $this->version, 'all' );
 
 	}
 
@@ -96,7 +96,7 @@ class myanimelist_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->myanimelist, plugin_dir_url( __FILE__ ) . 'js/myanimelist-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/myanimelist-public.js', array( 'jquery' ), $this->version, false );
 
 	}
 

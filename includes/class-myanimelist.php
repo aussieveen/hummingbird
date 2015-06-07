@@ -68,7 +68,7 @@ class myanimelist {
 	 */
 	public function __construct() {
 
-		$this->myanimelist = 'myanimelist';
+		$this->plugin_name = 'myanimelist';
 		$this->version = '1.0.0';
 
 		$this->load_dependencies();
@@ -154,6 +154,8 @@ class myanimelist {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_admin_menu' );
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_settings' );
 
 	}
 
@@ -190,7 +192,7 @@ class myanimelist {
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_myanimelist() {
-		return $this->myanimelist;
+		return $this->plugin_name;
 	}
 
 	/**
