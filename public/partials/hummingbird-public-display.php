@@ -8,8 +8,8 @@
  * @link       http://example.com
  * @since      1.0.0
  *
- * @package    myanimelist
- * @subpackage myanimelist/public/partials
+ * @package    hummingbird
+ * @subpackage hummingbird/public/partials
  */
 ?>
 

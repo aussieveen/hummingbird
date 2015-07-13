@@ -9,8 +9,8 @@
  * @link       http://example.com
  * @since      1.0.0
  *
- * @package    myanimelist
- * @subpackage myanimelist/includes
+ * @package    hummingbird
+ * @subpackage hummingbird/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    myanimelist
- * @subpackage myanimelist/includes
- * @author     Your Name <email@example.com>
+ * @package    hummingbird
+ * @subpackage hummingbird/includes
+ * @author     Simon McWhinnie <simon.mcwhinnie@gmail.com>
  */
-class myanimelist_i18n {
+class hummingbird_i18n {
 
 	/**
 	 * The domain specified for this plugin.

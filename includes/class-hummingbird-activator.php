@@ -6,8 +6,8 @@
  * @link       http://example.com
  * @since      1.0.0
  *
- * @package    myanimelist
- * @subpackage myanimelist/includes
+ * @package    hummingbird
+ * @subpackage hummingbird/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's activation.
  *
  * @since      1.0.0
- * @package    myanimelist
- * @subpackage myanimelist/includes
- * @author     Your Name <email@example.com>
+ * @package    hummingbird
+ * @subpackage hummingbird/includes
+ * @author     Simon McWhinnie <simon.mcwhinnie@gmail.com>
  */
-class myanimelist_Activator {
+class hummingbird_Activator {
 
 	/**
 	 * Short Description. (use period)

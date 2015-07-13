@@ -6,8 +6,8 @@
  * @link       http://example.com
  * @since      1.0.0
  *
- * @package    myanimelist
- * @subpackage myanimelist/admin
+ * @package    hummingbird
+ * @subpackage hummingbird/admin
  */
 
 /**
@@ -16,20 +16,20 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    myanimelist
- * @subpackage myanimelist/admin
- * @author     Your Name <email@example.com>
+ * @package    hummingbird
+ * @subpackage hummingbird/admin
+ * @author     Simon McWhinnie <simon.mcwhinnie@gmail.com>
  */
-class myanimelist_Admin {
+class hummingbird_Admin {
 
 	/**
 	 * The ID of this plugin.
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      string    $myanimelist    The ID of this plugin.
+	 * @var      string    $hummingbird    The ID of this plugin.
 	 */
-	private $myanimelist;
+	private $hummingbird;
 
 	/**
 	 * The version of this plugin.
@@ -44,12 +44,12 @@ class myanimelist_Admin {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $myanimelist       The name of this plugin.
+	 * @param      string    $hummingbird       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $myanimelist, $version ) {
+	public function __construct( $hummingbird, $version ) {
 
-		$this->plugin_name = $myanimelist;
+		$this->plugin_name = $hummingbird;
 		$this->version = $version;
 
 		$this->option_group       = $this->plugin_name . '_option_group';
@@ -69,15 +69,15 @@ class myanimelist_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in myanimelist_Loader as all of the hooks are defined
+		 * defined in hummingbird_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The myanimelist_Loader will then create the relationship
+		 * The hummingbird_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/myanimelist-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/hummingbird-admin.css', array(), $this->version, 'all' );
 
 	}
 
@@ -92,15 +92,15 @@ class myanimelist_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in myanimelist_Loader as all of the hooks are defined
+		 * defined in hummingbird_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The myanimelist_Loader will then create the relationship
+		 * The hummingbird_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/myanimelist-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/hummingbird-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
 
@@ -130,7 +130,7 @@ class myanimelist_Admin {
 	 * @since    1.0
 	 */
 	public function display_plugin_admin_page() {
-		require_once( 'partials/myanimelist-admin-display.php' );
+		require_once( 'partials/hummingbird-admin-display.php' );
 	}
 
 	public function register_settings() {
@@ -216,5 +216,9 @@ class myanimelist_Admin {
 			}
 		}
 		return $options;
+	}
+
+	public function register_widget(){
+		register_widget( 'MyAnimeList_Widget' );
 	}
 }

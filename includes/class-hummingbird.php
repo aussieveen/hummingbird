@@ -9,8 +9,8 @@
  * @link       http://example.com
  * @since      1.0.0
  *
- * @package    myanimelist
- * @subpackage myanimelist/includes
+ * @package    hummingbird
+ * @subpackage hummingbird/includes
  */
 
 /**
@@ -23,11 +23,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    myanimelist
- * @subpackage myanimelist/includes
- * @author     Your Name <email@example.com>
+ * @package    hummingbird
+ * @subpackage hummingbird/includes
+ * @author     Simon McWhinnie <simon.mcwhinnie@gmail.com>
  */
-class myanimelist {
+class hummingbird {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -35,7 +35,7 @@ class myanimelist {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      myanimelist_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      hummingbird_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -44,9 +44,9 @@ class myanimelist {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $myanimelist    The string used to uniquely identify this plugin.
+	 * @var      string    $hummingbird    The string used to uniquely identify this plugin.
 	 */
-	protected $myanimelist;
+	protected $hummingbird;
 
 	/**
 	 * The current version of the plugin.
@@ -68,7 +68,7 @@ class myanimelist {
 	 */
 	public function __construct() {
 
-		$this->plugin_name = 'myanimelist';
+		$this->plugin_name = 'hummingbird';
 		$this->version = '1.0.0';
 
 		$this->load_dependencies();
@@ -83,10 +83,10 @@ class myanimelist {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - myanimelist_Loader. Orchestrates the hooks of the plugin.
-	 * - myanimelist_i18n. Defines internationalization functionality.
-	 * - myanimelist_Admin. Defines all hooks for the admin area.
-	 * - myanimelist_Public. Defines all hooks for the public side of the site.
+	 * - hummingbird_Loader. Orchestrates the hooks of the plugin.
+	 * - hummingbird_i18n. Defines internationalization functionality.
+	 * - hummingbird_Admin. Defines all hooks for the admin area.
+	 * - hummingbird_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -100,33 +100,43 @@ class myanimelist {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-myanimelist-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-hummingbird-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-myanimelist-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-hummingbird-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-myanimelist-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-hummingbird-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-myanimelist-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-hummingbird-public.php';
 
-		$this->loader = new myanimelist_Loader();
+		/**
+		 * The class to display with custom widget
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-hummingbird-widget.php';
+
+		/**
+		 * Class to make REST requests to the hummingbird.net api
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-hummingbird-rest.php';
+
+		$this->loader = new hummingbird_Loader();
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the myanimelist_i18n class in order to set the domain and to register the hook
+	 * Uses the hummingbird_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -134,8 +144,8 @@ class myanimelist {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new myanimelist_i18n();
-		$plugin_i18n->set_domain( $this->get_myanimelist() );
+		$plugin_i18n = new hummingbird_i18n();
+		$plugin_i18n->set_domain( $this->get_hummingbird() );
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -150,12 +160,13 @@ class myanimelist {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new myanimelist_Admin( $this->get_myanimelist(), $this->get_version() );
+		$plugin_admin = new hummingbird_Admin( $this->get_hummingbird(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_admin_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_settings' );
+		$this->loader->add_action( 'widgets_init', $plugin_admin, 'register_widget' );
 
 	}
 
@@ -168,7 +179,7 @@ class myanimelist {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new myanimelist_Public( $this->get_myanimelist(), $this->get_version() );
+		$plugin_public = new hummingbird_Public( $this->get_hummingbird(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -191,7 +202,7 @@ class myanimelist {
 	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
 	 */
-	public function get_myanimelist() {
+	public function get_hummingbird() {
 		return $this->plugin_name;
 	}
 
@@ -199,7 +210,7 @@ class myanimelist {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    myanimelist_Loader    Orchestrates the hooks of the plugin.
+	 * @return    hummingbird_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

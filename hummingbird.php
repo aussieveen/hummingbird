@@ -10,18 +10,18 @@
  *
  * @link              http://example.com
  * @since             1.0.0
- * @package           myanimelist
+ * @package           hummingbird
  *
  * @wordpress-plugin
- * Plugin Name:       My Anime List
- * Plugin URI:        http://example.com/myanimelist-uri/
- * Description:       Allows you to display content from My Anime List using their REST api. 
+ * Plugin Name:       Hummingbird
+ * Plugin URI:        http://example.com/hummingbird-uri/
+ * Description:       Allows you to display content from Hummingbird.me using their REST api.
  * Version:           1.0.0
  * Author:            Simon McWhinnie
  * Author URI:        http://www.veen-online.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       myanimelist
+ * Text Domain:       hummingbird
  * Domain Path:       /languages
  */
 
@@ -32,30 +32,30 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-myanimelist-activator.php
+ * This action is documented in includes/class-hummingbird-activator.php
  */
-function activate_myanimelist() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-myanimelist-activator.php';
-	myanimelist_Activator::activate();
+function activate_hummingbird() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-hummingbird-activator.php';
+	hummingbird_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-myanimelist-deactivator.php
+ * This action is documented in includes/class-hummingbird-deactivator.php
  */
-function deactivate_myanimelist() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-myanimelist-deactivator.php';
-	myanimelist_Deactivator::deactivate();
+function deactivate_hummingbird() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-hummingbird-deactivator.php';
+	hummingbird_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_myanimelist' );
-register_deactivation_hook( __FILE__, 'deactivate_myanimelist' );
+register_activation_hook( __FILE__, 'activate_hummingbird' );
+register_deactivation_hook( __FILE__, 'deactivate_hummingbird' );
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-myanimelist.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-hummingbird.php';
 
 /**
  * Begins execution of the plugin.
@@ -66,10 +66,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-myanimelist.php';
  *
  * @since    1.0.0
  */
-function run_myanimelist() {
+function run_hummingbird() {
 
-	$plugin = new myanimelist();
+	$plugin = new hummingbird();
 	$plugin->run();
 
 }
-run_myanimelist();
+run_hummingbird();
