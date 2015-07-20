@@ -115,8 +115,8 @@ class hummingbird_Admin {
 		 * Add a settings page for this plugin to the Settings menu.
 		*/
 		add_options_page(
-			__( 'MyAnimeList Options', $this->plugin_name ),
-			__( 'MyAnimeList', $this->plugin_name ),
+			__( 'Hummingbird Options', $this->plugin_name ),
+			__( 'Hummingbird', $this->plugin_name ),
 			'manage_options',
 			$this->plugin_name,
 			array( $this, 'display_plugin_admin_page' )
@@ -153,8 +153,8 @@ class hummingbird_Admin {
 
 		// Add the username option
 		add_settings_field(
-			'mal_username',
-			__( 'MyAnimeList Username', $this->plugin_name ),
+			'hb_username',
+			__( 'Hummingbird Username', $this->plugin_name ),
 			array( $this, 'show_username_option' ),
 			$this->plugin_name,
 			$this->setting_section_id
@@ -162,7 +162,7 @@ class hummingbird_Admin {
 
 		// Add the cache time option
 		add_settings_field(
-			'mal_cache_timer',
+			'hb_cache_timer',
 			__( 'Cache expire (in minutes)', $this->plugin_name ),
 			array( $this, 'show_cache_timer_option' ), 
 			$this->plugin_name, 
@@ -176,7 +176,7 @@ class hummingbird_Admin {
 	 * Outputs the section info
 	 */
 	public function print_section_info() {
-		_e( 'This page allows you to set all the options for the MyAnimeList plugin', $this->plugin_name );
+		_e( 'This page allows you to set all the options for the Hummingbird plugin', $this->plugin_name );
 	}
 
 	/**
@@ -184,20 +184,20 @@ class hummingbird_Admin {
 	 */
 	public function show_username_option() {
 		$options = get_option( $this->option_name );
-		$value = isset( $options[ 'mal_username' ] ) ? $options[ 'mal_username' ] : '';
+		$value = isset( $options[ 'hb_username' ] ) ? $options[ 'hb_username' ] : '';
 		printf(
-			'<input type="text" id="mal_username" name="%s" value="%s" />',
-			$this->option_name . "[mal_username]",
+			'<input type="text" id="hb_username" name="%s" value="%s" />',
+			$this->option_name . "[hb_username]",
 			$value
 		);
 	}
 
 	public function show_cache_timer_option() {
 		$options = get_option( $this->option_name );
-		$value = isset( $options[ 'mal_cache_timer' ] ) ? $options[ 'mal_cache_timer' ] : '';
+		$value = isset( $options[ 'hb_cache_timer' ] ) ? $options[ 'hb_cache_timer' ] : '';
 		printf(
-			'<input type="text" id="mal_cache_timer" name="%s" value="%s" />',
-			$this->option_name . "[mal_cache_timer]",
+			'<input type="text" id="hb_cache_timer" name="%s" value="%s" />',
+			$this->option_name . "[hb_cache_timer]",
 			$value
 		);
 	}
@@ -205,7 +205,7 @@ class hummingbird_Admin {
 	public function validate_options( $options ) {
 		foreach ($options as $key => $value) {
 			switch ($key) {
-				case 'mal_cache_timer':
+				case 'hb_cache_timer':
 					if( !is_numeric( $value ) ){
 						$options[ $key ] = '';
 					}
@@ -219,6 +219,6 @@ class hummingbird_Admin {
 	}
 
 	public function register_widget(){
-		register_widget( 'MyAnimeList_Widget' );
+		register_widget( 'Hummingbird_Widget' );
 	}
 }

@@ -129,6 +129,16 @@ class hummingbird {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-hummingbird-rest.php';
 
+		/**
+		 * Class to define available requests to the hummingbird.net api
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-hummingbird-requests.php';
+
+		/**
+		 * Utility class for decoding the Hummingbird Feed
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-hummingbird-utilities.php';
+
 		$this->loader = new hummingbird_Loader();
 
 	}
