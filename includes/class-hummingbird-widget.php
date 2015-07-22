@@ -28,15 +28,11 @@ class Hummingbird_Widget extends WP_Widget{
 		$result = get_transient($widget_id);
 		$requests_library = Requests::get_requests();
 		if(!$result){
-			var_dump("FROM SITE");
 			$rest = new Rest();
 			$options = get_option( $this->options_name );
 			$expires = $options['hb_cache_timer'] * 60;
-			var_dump($expires);
 			$result = $rest->get( $instance['request'] , $options['hb_username'] );
 			set_transient( $widget_id, $result, $expires );
-		}else{
-			var_dump("FROM CACHE");
 		}
 
 		if( $result['httpCode'] != $requests_library[ $instance['request'] ][ 'success_response' ] ){

@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Simon McWhinnie
- * Date: 20/07/2015
- * Time: 19:29
- */
 class Hummingbird_Utilities {
 
 	public static function format_interval($interval, $granularity = 2) {
