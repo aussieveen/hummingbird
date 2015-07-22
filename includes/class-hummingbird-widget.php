@@ -24,20 +24,27 @@ class Hummingbird_Widget extends WP_Widget{
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
+		extract( $args );
+		$result = get_transient($widget_id);
 		$requests_library = Requests::get_requests();
-		$rest = new Rest();
-		$options = get_option( $this->options_name );
-		$request = $instance['request'];
-		$username = $options['hb_username'];
+		if(!$result){
+			var_dump("FROM SITE");
+			$rest = new Rest();
+			$options = get_option( $this->options_name );
+			$expires = $options['hb_cache_timer'] * 60;
+			var_dump($expires);
+			$result = $rest->get( $instance['request'] , $options['hb_username'] );
+			set_transient( $widget_id, $result, $expires );
+		}else{
+			var_dump("FROM CACHE");
+		}
 
-		$result = $rest->get( $request, $username);
-		if( $result['httpCode'] != $requests_library[ $request ][ 'success_response' ] ){
+		if( $result['httpCode'] != $requests_library[ $instance['request'] ][ 'success_response' ] ){
 			return false;
 		}
 
 		$json_feed = $result['json'];
 
-		extract( $args );
 		echo $before_widget;
 
 		$template_path = $instance['template'];
@@ -82,7 +89,6 @@ class Hummingbird_Widget extends WP_Widget{
 		);
 
 		$templates = $this->get_templates();
-
 		printf('<p><label for = "%s">%s</label><select name="%s" id="%s">',
 			$this->get_field_id( 'template' ), 
 			__( 'Template: ', $this->text_domain ),
@@ -92,7 +98,7 @@ class Hummingbird_Widget extends WP_Widget{
 
 		$template = $instance['template'];
 		foreach($templates as $template_option){
-			printf('<option value="%s" %s>%s</option>', $template_option['path'], selected( $template, $template_option['path'], false ), $template_option['name'] );
+			printf('<option value="%s" %s>%s</option>', $template_option['file'], selected( $template, $template_option['file'], false ), $template_option['name'] );
 		}
 		printf('</select></p>');
 	}
@@ -115,7 +121,7 @@ class Hummingbird_Widget extends WP_Widget{
 		$templates = array(
 			array( 
 				'name' => __('Default', $this->text_domain), 
-				'path' => $this->default_template_path)
+				'file' => $this->default_template_path)
 		);
 		$path = $this->get_template_path_from_theme();
 		$files = array();
@@ -130,7 +136,7 @@ class Hummingbird_Widget extends WP_Widget{
 			if( isset( $file_data['name'] ) ){
 				$templates[] = array( 
 					'name' => $file_data['name'], 
-					'path' => $this->get_theme_template_folder() . $file 
+					'file' => $file
 				);
 			}
 		}
@@ -145,7 +151,7 @@ class Hummingbird_Widget extends WP_Widget{
 
 	public function get_theme_template_folder(){
 		$hb_options = get_option( $this->options_name );
-		$folder = isset( $hb_options['template_directory'] ) ? "/" . $hb_options['template_directory'] . "/" : '/hb-templates/';
+		$folder = isset( $hb_options['template_directory'] ) ? "/" . $hb_options['template_directory'] . "/" : '/hummingbird-templates/';
 		return $folder;
 	}
 
