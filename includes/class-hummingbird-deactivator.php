@@ -3,7 +3,7 @@
 /**
  * Fired during plugin deactivation
  *
- * @link       http://example.com
+ * @link       https://github.com/simonmcwhinnie/hummingbird
  * @since      1.0.0
  *
  * @package    hummingbird

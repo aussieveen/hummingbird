@@ -6,7 +6,7 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       http://example.com
+ * @link       https://github.com/simonmcwhinnie/hummingbird
  * @since      1.0.0
  *
  * @package    hummingbird
@@ -138,6 +138,11 @@ class hummingbird {
 		 * Utility class for decoding the Hummingbird Feed
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-hummingbird-utilities.php';
+
+		/**
+		 * Class to render the hummingbird shortcode
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-hummingbird-shortcode.php';
 
 		$this->loader = new hummingbird_Loader();
 

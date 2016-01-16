@@ -26,24 +26,17 @@ class Hummingbird_Widget extends WP_Widget{
 	public function widget( $args, $instance ) {
 		extract( $args );
 		$result = get_transient($widget_id);
-		$requests_library = Requests::get_requests();
 		if(!$result){
-			var_dump("FROM SITE");
-			$rest = new Rest();
+			$request = new Requests();
 			$options = get_option( $this->options_name );
-			$expires = $options['hb_cache_timer'] * 60;
-			var_dump($expires);
-			$result = $rest->get( $instance['request'] , $options['hb_username'] );
-			set_transient( $widget_id, $result, $expires );
-		}else{
-			var_dump("FROM CACHE");
+			$result = $request->make_request( $instance['request'], $widget_id, $options['hb_cache_timer'] * 60, $options['hb_username'] );
 		}
-
-		if( $result['httpCode'] != $requests_library[ $instance['request'] ][ 'success_response' ] ){
+		
+		if( !$result ){
 			return false;
 		}
 
-		$json_feed = $result['json'];
+		$json_feed = $result['json']; //Used within the template file
 
 		echo $before_widget;
 
