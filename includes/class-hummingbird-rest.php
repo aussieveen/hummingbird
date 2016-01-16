@@ -2,11 +2,7 @@
 
 class Rest{
 
-	private $base_rest_request_format = 'http://hummingbird.me/api/v1/';
-
-	public function get( Array $request_details, $username = null ){
-
-		$request = $this->base_rest_request_format . sprintf( $request_details['url'], $username );
+	public function get( $request ){
 
 		$curl = curl_init();
 		curl_setopt( $curl, CURLOPT_URL, $request);

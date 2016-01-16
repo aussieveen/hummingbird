@@ -11,6 +11,7 @@ class Hummingbird_Shortcode {
 	public function render_shortcode( $atts, $content = ""){
 		$transient_id = 'hummingbird_shortcode_library';
 		$options_name = 'hummingbird_option_name';
+		$anime_format = '<div class="anime"><img class="anime-cover" src="%s"><p class = "anime-title">%s</p></div>';
 		$feed = get_transient( $transient_id );
 		if(!$feed){
 			$request = new Requests();
@@ -21,9 +22,12 @@ class Hummingbird_Shortcode {
 			return;
 		}
 		$json_feed = json_decode( $feed['json'] );
-		var_dump($json_feed);
-
-
+		print('<h2>Currently Watching</h2><div class = "hummingbird_shortcode" id = "currently_watching">');
+		foreach($json_feed as $library_entry){
+			$anime = $library_entry->anime;
+			printf( $anime_format, $anime->cover_image, $anime->title );
+		}
+		print('</div>');
 	}
 }
 
