@@ -1,7 +1,22 @@
 <?php
 
+/**
+ * Dedicated class to make the API request to Hummingbird.
+ *
+ * @link       https://github.com/simonmcwhinnie/hummingbird
+ * @since      0.0.2
+ *
+ * @package    hummingbird
+ * @subpackage hummingbird/includes
+ */
+
 class Rest{
 
+	/**
+	 * @param $request
+	 *
+	 * @return array
+	 */
 	public function get( $request ){
 
 		$curl = curl_init();

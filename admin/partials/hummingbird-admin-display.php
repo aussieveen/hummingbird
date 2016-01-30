@@ -6,7 +6,7 @@
  * This file is used to markup the admin-facing aspects of the plugin.
  *
  * @link       https://github.com/simonmcwhinnie/hummingbird
- * @since      1.0.0
+ * @since      0.0.1
  *
  * @package    hummingbird
  * @subpackage hummingbird/admin/partials

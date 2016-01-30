@@ -1,13 +1,21 @@
 <?php
 
 /**
- * Created by PhpStorm
- * User: Simon McWhinnie
- * Date: 27/12/2015
- * Time: 21:33
+ * Adds and renders the Hummingbird Shortcode
+ *
+ * @link       https://github.com/simonmcwhinnie/hummingbird
+ * @since      0.0.2
+ *
+ * @package    hummingbird
+ * @subpackage hummingbird/includes
  */
+
 class Hummingbird_Shortcode {
 
+	/**
+	 * @param $atts
+	 * @param string $content
+	 */
 	public function render_shortcode( $atts, $content = ""){
 		wp_enqueue_script('bootstrap-modal');
 		wp_enqueue_style('bootstrap-modal');

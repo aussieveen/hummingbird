@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              https://github.com/simonmcwhinnie/hummingbird
- * @since             1.0.0
+ * @since             0.0.1
  * @package           hummingbird
  *
  * @wordpress-plugin
  * Plugin Name:       Hummingbird
  * Plugin URI:        https://github.com/simonmcwhinnie/hummingbird/
  * Description:       Allows you to display content from Hummingbird.me using their REST api.
- * Version:           1.0.0
+ * Version:           0.0.2
  * Author:            Simon McWhinnie
  * Author URI:        http://www.veen-online.com
  * License:           GPL-2.0+
@@ -64,7 +64,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-hummingbird.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.0
+ * @since    0.0.1
  */
 function run_hummingbird() {
 

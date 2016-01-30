@@ -1,15 +1,25 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: Simon McWhinnie
- * Date: 13/07/2015
- * Time: 20:00
+ * Controls and contains information about all available requests that can be made to Hummingbird.
+ *
+ * @link       https://github.com/simonmcwhinnie/hummingbird
+ * @since      0.0.1
+ *
+ * @package    hummingbird
+ * @subpackage hummingbird/includes
  */
+
 class Requests {
 
+	/**
+	 * @var string
+	 */
 	private $base_rest_request_format = 'http://hummingbird.me/api/v1/';
 
+	/**
+	 * @var array
+	 */
     private static $requests = array(
         'feed' => array(
             'slug' => 'feed',
@@ -32,6 +42,15 @@ class Requests {
 		return self::$requests;
 	}
 
+	/**
+	 * @param $request_slug
+	 * @param $transient_id
+	 * @param $expiration
+	 * @param string $username
+	 * @param string $optional
+	 *
+	 * @return array|bool
+	 */
 	public function make_request( $request_slug, $transient_id, $expiration, $username = '', $optional = '' ){
 
 		$rest = new Rest();
