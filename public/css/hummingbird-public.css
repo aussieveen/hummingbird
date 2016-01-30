@@ -35,8 +35,12 @@
   width: 210px;
   margin-right: 20px;
   position: relative; }
-  .hummingbird_shortcode .anime .anime-title {
-    min-height: 105px; }
+  .hummingbird_shortcode .anime .anime-title-wrap {
+    height: 68px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    margin-bottom: 20px; }
   .hummingbird_shortcode .anime .overlay {
     height: 304px;
     width: 210px;
@@ -49,6 +53,8 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) 100%); }
     .hummingbird_shortcode .anime .overlay:hover {
       opacity: 1; }
+    .hummingbird_shortcode .anime .overlay h5.overlay-anime-title {
+      font-size: 18px; }
     .hummingbird_shortcode .anime .overlay p {
       font-size: 1.2em;
       margin-bottom: 15px; }

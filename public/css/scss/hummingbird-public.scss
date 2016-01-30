@@ -44,9 +44,14 @@
     width: 210px;
     margin-right: 20px;
     position: relative;
-    .anime-title {
-      min-height: 105px;
+    .anime-title-wrap{
+      height: 68px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      word-wrap: break-word;
+      margin-bottom:20px;
     }
+
     .overlay {
       height: 304px;
       width:210px;
@@ -59,6 +64,9 @@
       background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) 100%);
       &:hover {
         opacity: 1;
+      }
+      h5.overlay-anime-title{
+        font-size:18px;
       }
       p{
         font-size:1.2em;
