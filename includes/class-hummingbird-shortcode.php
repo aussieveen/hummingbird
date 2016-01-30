@@ -38,7 +38,7 @@ class Hummingbird_Shortcode {
 			return;
 		}
 		$json_feed = json_decode( $feed['json'] );
-		$rendered_shortcode = sprint('<div class = "hummingbird_shortcode">');
+		$rendered_shortcode = '<div class = "hummingbird_shortcode">';
 		foreach($json_feed as $library_entry){
 			$anime = $library_entry->anime;
 			$rendered_shortcode .= sprintf( $anime_format, $anime->status, $library_entry->episodes_watched, $anime->episode_count, $anime->slug, $anime->cover_image, $anime->title );
@@ -49,7 +49,7 @@ class Hummingbird_Shortcode {
 			$genre_list = rtrim( $genre_list, ", " );
 			$rendered_shortcode .= sprintf( $lightbox_format, $anime->slug, $anime->title, $anime->cover_image, $anime->synopsis, $genre_list );
 		}
-		$rendered_shortcode .= sprint('</div>');
+		$rendered_shortcode .= '</div>';
 		return $rendered_shortcode;
 	}
 }
