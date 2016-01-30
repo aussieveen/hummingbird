@@ -74,6 +74,7 @@ class hummingbird_Public {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/hummingbird-public.css', array(), $this->version, 'all' );
+		wp_register_style( 'bootstrap-modal', plugin_dir_url( __FILE__ ) . 'css/bootstrap.min.css', array(), $this->version, 'all' );
 
 	}
 
@@ -97,6 +98,7 @@ class hummingbird_Public {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/hummingbird-public.js', array( 'jquery' ), $this->version, false );
+		wp_register_script( 'bootstrap-modal', plugin_dir_url( __FILE__ ) . 'js/bootstrap.min.js', array( 'jquery' ), $this->version, true );
 
 	}
 

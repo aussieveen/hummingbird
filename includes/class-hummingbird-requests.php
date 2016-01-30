@@ -43,12 +43,18 @@ class Requests {
 		if ( ! isset( $username ) && $requests[ $request_slug ]['username'] ) {
 			return false;
 		}
-		$optional = "?status=currently-watching";
+
+		if(is_array($optional)){
+			$optional_request_variables = "?";
+			foreach($optional as $k => $v){
+				$optional_request_variables .= $k . "=" . $v . "&";
+			}
+		}
 
 		$request = $this->base_rest_request_format . sprintf( $requests[$request_slug]['url'], $username );
 
-		if( $optional ){
-			$request .= $optional;
+		if( $optional_request_variables ){
+			$request .= $optional_request_variables;
 		}
 
 

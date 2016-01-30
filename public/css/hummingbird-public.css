@@ -15,4 +15,77 @@
 .widget.widget_hummingbird_widget p.event-text {
   margin-bottom: 0.2em; }
 
+.hummingbird_shortcode .noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Chrome/Safari/Opera */
+  -khtml-user-select: none;
+  /* Konqueror */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE/Edge */
+  user-select: none;
+  /* non-prefixed version, currently
+                         not supported by any browser */
+  cursor: default; }
+.hummingbird_shortcode .anime {
+  float: left;
+  width: 210px;
+  margin-right: 20px;
+  position: relative; }
+  .hummingbird_shortcode .anime .anime-title {
+    min-height: 105px; }
+  .hummingbird_shortcode .anime .overlay {
+    height: 304px;
+    width: 210px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    padding: 5px 10px;
+    color: white;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) 100%); }
+    .hummingbird_shortcode .anime .overlay:hover {
+      opacity: 1; }
+    .hummingbird_shortcode .anime .overlay p {
+      font-size: 1.2em;
+      margin-bottom: 15px; }
+.hummingbird_shortcode .modal-header {
+  border-bottom: none; }
+.hummingbird_shortcode .modal-body {
+  display: inline-block; }
+  .hummingbird_shortcode .modal-body img.anime-cover {
+    width: 25%;
+    float: left; }
+  .hummingbird_shortcode .modal-body .modal-subcontent {
+    padding: 0 15px;
+    width: 75%;
+    display: inline-block; }
+    .hummingbird_shortcode .modal-body .modal-subcontent h4 {
+      clear: none; }
+    .hummingbird_shortcode .modal-body .modal-subcontent p {
+      margin-bottom: 15px; }
+.hummingbird_shortcode .modal-footer button {
+  color: white; }
+@media (min-width: 768px) {
+  .hummingbird_shortcode .modal-dialog {
+    min-width: 718px;
+    width: 80%;
+    max-width: 900px; } }
+@media (max-width: 767px) {
+  .hummingbird_shortcode .modal-body img.anime-cover {
+    display: none; }
+  .hummingbird_shortcode .modal-body .modal-subcontent {
+    width: 100%;
+    padding: 0px; } }
+
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.4s linear;
+  -moz-transition: opacity 0.4s linear;
+  -o-transition: opacity 0.4s linear;
+  transition: opacity 0.4s linear; }
+
 /*# sourceMappingURL=hummingbird-public.css.map */
