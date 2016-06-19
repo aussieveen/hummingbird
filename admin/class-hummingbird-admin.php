@@ -19,6 +19,7 @@
  * @package    hummingbird
  * @subpackage hummingbird/admin
  * @author     Simon McWhinnie <simon.mcwhinnie@gmail.com>
+ * Testing additional commit
  */
 class hummingbird_Admin {
 
